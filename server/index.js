@@ -26,9 +26,6 @@ app.get("/api", jsonParser, (req, res) => {
 });
 
 app.post("/api/send", (req, res) => {
-  // res.json({ requestBody: req.body }); // <==== req.body will be a parsed JSON object
-
-  // const { name, email, message, subject } = req.body;
   transporter
     .sendMail({
       to: "jillfetherston@gmail.com",
