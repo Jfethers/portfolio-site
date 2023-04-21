@@ -1,0 +1,27 @@
+.navigation-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 10px 15px;
+    .actions {
+        margin-right: auto;
+        position: relative;
+        left: 35px;
+    }
+    .contact-icons {
+        .icon {
+            padding: 0 10px;
+            display: inline;
+            cursor: pointer;
+            &:hover {
+                filter: brightness(85%);
+            }
+            transition: filter 200ms ease-in;
+            svg {
+                height: 35px;
+                width: 35px;
+                fill: $red;
+            }
+        }
+    }
+}

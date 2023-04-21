@@ -1,0 +1,27 @@
+.tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 250px;
+    width: 250px;
+    display: flex;
+    margin: 5px;
+    color: $white;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    opacity: 1;
+    cursor: pointer;
+    &:hover {
+        filter: brightness(85%);
+    }
+    transition: filter 200ms ease-in;
+}
+.tile-contents {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width: 500px;
+    
+}
