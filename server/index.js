@@ -2,11 +2,16 @@
 const express = require("express");
 const PORT = process.env.PORT || 3001;
 const app = express();
-
 // sendgrid
 const nodemailer = require("nodemailer");
 const sendGridTransport = require("nodemailer-sendgrid-transport");
 const { SENDGRID_API } = require("../config/keys");
+
+// body parser
+const bodyParser = require("body-parser");
+var jsonParser = bodyParser.json();
+
+app.use(express.json()); // <==== parse request body as JSON
 
 const transporter = nodemailer.createTransport(
   sendGridTransport({
@@ -16,25 +21,24 @@ const transporter = nodemailer.createTransport(
   })
 );
 
-app.get("/api", (req, res) => {
+app.get("/api", jsonParser, (req, res) => {
   res.json({ message: "Hello from server!" });
 });
 
-app.post("/send", (req, res) => {
-  const { name, email, message, subject } = req.body;
+app.post("/api/send", (req, res) => {
+  // res.json({ requestBody: req.body }); // <==== req.body will be a parsed JSON object
+
+  // const { name, email, message, subject } = req.body;
   transporter
     .sendMail({
       to: "jillfetherston@gmail.com",
-      from: email,
-      subject: subject,
-      html: `<h3>${name}</h3>
-  <p>${message}</p>`,
+      from: req.body.email,
+      subject: req.body.subject,
+      html: `<h3>${req.body.name}</h3>
+  <p>${req.body.message}</p>`,
     })
     .then((resp) => {
       res.json({ resp });
-    })
-    .catch((err) => {
-      console.log(err);
     });
 });
 
