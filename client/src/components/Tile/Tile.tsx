@@ -12,7 +12,6 @@ interface ITileProps {
 const Tile: FunctionComponent<ITileProps> = (props: ITileProps) => {
   const { project } = props;
   const [showModal, setShowModal] = useState(false);
-  console.log("tileColors", tileColors);
   const tileKey = project.color as keyof typeof tileColors;
   const tileColor = tileColors[tileKey];
 

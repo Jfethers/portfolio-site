@@ -31,10 +31,6 @@ const App = () => {
       });
   };
 
-  useEffect(() => {
-    send();
-  }, []);
-
   return (
     <>
       <Navigation />
