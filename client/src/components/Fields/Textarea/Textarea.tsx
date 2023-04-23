@@ -46,16 +46,14 @@ const Textarea: FunctionComponent<TextareaProps> = (props: TextareaProps) => {
   const { locked, id } = props;
 
   return (
-    <div className="textarea">
-      <Text
-        label={label}
-        id={id}
-        locked={locked}
-        active={active}
-        error={error}
-        type="textarea"
-      />
-    </div>
+    <Text
+      label={label}
+      id={id}
+      locked={locked}
+      active={active}
+      error={error}
+      type="textarea"
+    />
   );
 };
 
