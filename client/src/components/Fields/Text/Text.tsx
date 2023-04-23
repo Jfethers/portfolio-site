@@ -1,5 +1,6 @@
 /*tslint:disabled*/
 import React, { FormEvent, useState, FunctionComponent } from "react";
+import classNames from "classnames";
 
 type TextProps = {
   id: string;
@@ -30,9 +31,11 @@ const Text: FunctionComponent<TextProps> = (props: TextProps) => {
   const [value, setValue] = useState(props.value || "");
   const [error, setError] = useState(props.error || "");
   const [label, setLabel] = useState(props.label || "Label");
+  const [focused, setFocused] = useState(
+    (props.locked && props.focused) || false
+  );
 
   const changeValue = (event: FormEvent<HTMLInputElement>) => {
-    console.log("change value", event);
     const { currentTarget } = event;
     const value = (currentTarget as HTMLInputElement).value;
     console.log("value", value);
@@ -42,18 +45,23 @@ const Text: FunctionComponent<TextProps> = (props: TextProps) => {
 
   const { locked } = props;
 
-  const fieldClassName = `field ${
-    (locked ? active : active || value) && "active"
-  } ${locked && !active && "locked"}`;
-
   return (
-    <div className="field">
+    <div
+      className={classNames({
+        field: true,
+        active: locked ? active : active || value,
+        locked: locked && !active,
+        focused: locked ? focused : focused || value,
+      })}
+    >
       <input
         id={"1"}
         type="text"
         value={value}
         placeholder={label}
         onChange={(e: FormEvent<HTMLInputElement>) => changeValue(e)}
+        onFocus={() => !locked && setFocused(true)}
+        onBlur={() => !locked && setFocused(false)}
         // onKeyDown={this.handleKeyPress.bind(this)}
       />
       <label htmlFor={"1"} className={error && "error"}>

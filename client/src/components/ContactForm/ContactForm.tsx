@@ -46,7 +46,6 @@ const ContactForm = () => {
           <p>(I'm not doing weird things like collecting emails)</p>
         )}
       </div>
-      <Text id={"2"} locked={false} active={false} />
       <Form
         onSubmit={onSubmit}
         subscription={{
@@ -59,68 +58,26 @@ const ContactForm = () => {
           return (
             <form className="form-body" onSubmit={handleSubmit}>
               <div className="field-group">
-                <label className="label">Name</label>
-                <Field
-                  name="name"
-                  className="field"
-                  component="input"
-                  type="text"
-                >
-                  {({ input, meta }) => (
-                    <>
-                      <input {...input} type="text" placeholder="Name" />
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </>
-                  )}
-                </Field>
+                <Text id={"1"} locked={false} active={false} label={"Name"} />
               </div>
               <div className="field-group">
-                <label className="label">Email</label>
-                <Field
-                  name="email"
-                  className="field"
-                  component="input"
-                  type="text"
-                >
-                  {({ input, meta }) => (
-                    <>
-                      <input {...input} type="text" placeholder="Email" />
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </>
-                  )}
-                </Field>
+                <Text id={"2"} locked={false} active={false} label={"Email"} />
               </div>
               <div className="field-group">
-                <label className="label">Subject</label>
-                <Field
-                  name="subject"
-                  className="field"
-                  component="input"
-                  type="text"
-                >
-                  {({ input, meta }) => (
-                    <>
-                      <input {...input} type="text" placeholder="Subject" />
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </>
-                  )}
-                </Field>
+                <Text
+                  id={"3"}
+                  locked={false}
+                  active={false}
+                  label={"Subject"}
+                />
               </div>
               <div className="field-group">
-                <label className="label">Message</label>
-                <Field
-                  name="message"
-                  className="field"
-                  component="textarea"
-                  type="text"
-                >
-                  {({ input, meta }) => (
-                    <>
-                      <input {...input} type="text" placeholder="Message" />
-                      {meta.error && meta.touched && <span>{meta.error}</span>}
-                    </>
-                  )}
-                </Field>
+                <Text
+                  id={"4"}
+                  locked={false}
+                  active={false}
+                  label={"Message"}
+                />
               </div>
               <div className="submit">
                 <Button onClick={() => onSubmit(values, form)} type="submit">
