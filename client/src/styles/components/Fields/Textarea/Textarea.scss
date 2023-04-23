@@ -1,0 +1,9 @@
+.textarea {
+  height: 200px;
+}
+
+.textarea.active input {
+  padding: 24px 16px 8px 16px;
+  word-wrap: break-word;
+  width: 95%;
+}

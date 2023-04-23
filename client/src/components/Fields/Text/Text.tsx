@@ -12,6 +12,7 @@ type TextProps = {
   active?: boolean;
   locked?: boolean;
   predicted?: string;
+  type: string;
 };
 
 type TextState = {
@@ -38,32 +39,50 @@ const Text: FunctionComponent<TextProps> = (props: TextProps) => {
   const changeValue = (event: FormEvent<HTMLInputElement>) => {
     const { currentTarget } = event;
     const value = (currentTarget as HTMLInputElement).value;
-    console.log("value", value);
     setValue(value);
     setError("");
   };
 
-  const { locked } = props;
+  const changeTextarea = (event: FormEvent<HTMLTextAreaElement>) => {
+    const { currentTarget } = event;
+    const value = (currentTarget as HTMLTextAreaElement).value;
+    setValue(value);
+    setError("");
+  };
 
+  const { locked, id, type } = props;
   return (
     <div
       className={classNames({
         field: true,
+        [`${type}`]: true,
         active: locked ? active : active || value,
         locked: locked && !active,
         focused: locked ? focused : focused || value,
       })}
     >
-      <input
-        id={"1"}
-        type="text"
-        value={value}
-        placeholder={label}
-        onChange={(e: FormEvent<HTMLInputElement>) => changeValue(e)}
-        onFocus={() => !locked && setFocused(true)}
-        onBlur={() => !locked && setFocused(false)}
-        // onKeyDown={this.handleKeyPress.bind(this)}
-      />
+      {type === "text" ? (
+        <input
+          id={id}
+          type={type}
+          value={value}
+          placeholder={label}
+          onChange={(e: FormEvent<HTMLInputElement>) => changeValue(e)}
+          onFocus={() => !locked && setFocused(true)}
+          onBlur={() => !locked && setFocused(false)}
+          // onKeyDown={this.handleKeyPress.bind(this)}
+        />
+      ) : (
+        <textarea
+          id={id}
+          value={value}
+          placeholder={label}
+          onChange={(e: FormEvent<HTMLTextAreaElement>) => changeTextarea(e)}
+          onFocus={() => !locked && setFocused(true)}
+          onBlur={() => !locked && setFocused(false)}
+          // onKeyDown={this.handleKeyPress.bind(this)}
+        />
+      )}
       <label htmlFor={"1"} className={error && "error"}>
         {error || label}
       </label>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Field } from "react-final-form";
 import Text from "../Fields/Text/Text";
+import Textarea from "../Fields/Textarea/Textarea";
 import Button from "../Button/Button";
 
 const ContactForm = () => {
@@ -58,10 +59,22 @@ const ContactForm = () => {
           return (
             <form className="form-body" onSubmit={handleSubmit}>
               <div className="field-group">
-                <Text id={"1"} locked={false} active={false} label={"Name"} />
+                <Text
+                  id={"1"}
+                  locked={false}
+                  active={false}
+                  label={"Name"}
+                  type={"text"}
+                />
               </div>
               <div className="field-group">
-                <Text id={"2"} locked={false} active={false} label={"Email"} />
+                <Text
+                  id={"2"}
+                  locked={false}
+                  active={false}
+                  label={"Email"}
+                  type={"text"}
+                />
               </div>
               <div className="field-group">
                 <Text
@@ -69,14 +82,16 @@ const ContactForm = () => {
                   locked={false}
                   active={false}
                   label={"Subject"}
+                  type={"text"}
                 />
               </div>
               <div className="field-group">
-                <Text
+                <Textarea
                   id={"4"}
                   locked={false}
                   active={false}
                   label={"Message"}
+                  type={"text"}
                 />
               </div>
               <div className="submit">
