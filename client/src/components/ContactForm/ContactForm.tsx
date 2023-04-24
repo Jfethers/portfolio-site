@@ -3,6 +3,7 @@ import { Form, Field } from "react-final-form";
 import Text from "../Fields/Text/Text";
 import Textarea from "../Fields/Textarea/Textarea";
 import Button from "../Button/Button";
+import * as validate from "../../utils/validations";
 
 const ContactForm = () => {
   const [showEasterEgg, setShowEasterEgg] = useState(false);
@@ -56,42 +57,48 @@ const ContactForm = () => {
           pristine: true,
         }}
         render={({ handleSubmit, values, valid, form }) => {
+          console.log("values", values);
           return (
             <form className="form-body" onSubmit={handleSubmit}>
               <div className="field-group">
                 <Text
-                  id={"1"}
                   locked={false}
                   active={false}
                   label={"Name"}
                   type={"text"}
+                  fieldName="name"
+                  value={values.name}
                 />
               </div>
               <div className="field-group">
                 <Text
-                  id={"2"}
                   locked={false}
                   active={false}
                   label={"Email"}
                   type={"text"}
+                  validate={validate.email}
+                  fieldName="email"
+                  value={values.email}
                 />
               </div>
               <div className="field-group">
                 <Text
-                  id={"3"}
                   locked={false}
                   active={false}
                   label={"Subject"}
                   type={"text"}
+                  fieldName="subject"
+                  value={values.subject}
                 />
               </div>
               <div className="field-group">
                 <Textarea
-                  id={"4"}
                   locked={false}
                   active={false}
                   label={"Message"}
                   type={"text"}
+                  fieldName="message"
+                  value={values.message}
                 />
               </div>
               <div className="submit">
