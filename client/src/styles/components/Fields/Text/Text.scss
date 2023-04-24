@@ -25,11 +25,11 @@
   padding: 8px 16px 8px 16px;
 }
 
-.text.active input + label {
-  top: 4px;
-  opacity: 1;
-  color: $red;
-}
+// .text.active input + label {
+//   top: 4px;
+//   opacity: 1;
+//   color: $red;
+// }
 
 .text.locked {
   pointer-events: none;
@@ -82,9 +82,9 @@
   transition: 0.1s all ease-in-out;
 }
 
-.text input + label.error {
-  color: $red;
-}
+// .text input + label.error {
+//   color: $red;
+// }
 
 .text p.predicted {
   position: absolute;

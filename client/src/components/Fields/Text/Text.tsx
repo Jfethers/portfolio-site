@@ -9,12 +9,15 @@ type TextProps = {
   error?: string;
   label?: string;
   onChange?: Function;
-  active?: boolean;
+  active?: string;
   locked?: boolean;
   predicted?: string;
   type: string;
   validate?: Function;
   fieldName: string;
+  required?: boolean;
+  errors?: object;
+  focus: Function;
 };
 
 type TextState = {
@@ -22,23 +25,26 @@ type TextState = {
   value?: string;
   error?: string;
   label?: string;
-  active?: boolean;
+  active?: string;
   locked?: boolean;
   onChange?: () => "";
 };
 
 const Text: FunctionComponent<TextProps> = (props: TextProps) => {
-  // const { predicted, value, error, label, active } = props;
+  const fieldKey = props.fieldName as keyof typeof props.errors;
+  let fieldError = props.errors && props.errors[fieldKey];
 
-  const [active, setActive] = useState(props.locked && props.active);
-  // const [value, setValue] = useState(props.value || "");
-  const [error, setError] = useState(props.error || "");
+  // const [active, setActive] = useState(props.locked && props.active);
+
   const [label, setLabel] = useState(props.label || "Label");
   const [focused, setFocused] = useState(
     (props.locked && props.focused) || false
   );
 
-  const { locked, type, fieldName, value } = props;
+  const { locked, type, fieldName, value, validate, required, active, focus } =
+    props;
+
+  console.log("fieldError", fieldError);
   return (
     <div
       className={classNames({
@@ -46,7 +52,7 @@ const Text: FunctionComponent<TextProps> = (props: TextProps) => {
         [`${type}`]: true,
         active: locked ? active : active || value,
         locked: locked && !active,
-        focused: locked ? focused : focused || value,
+        focused: locked ? active : active || value,
       })}
     >
       {type === "text" ? (
@@ -55,8 +61,18 @@ const Text: FunctionComponent<TextProps> = (props: TextProps) => {
           type={type}
           placeholder={label}
           component="input"
-          onFocus={() => !locked && setFocused(true)}
-          onBlur={() => !locked && setFocused(false)}
+          onFocus={() => {
+            if (!locked) {
+              setFocused(true);
+            }
+          }}
+          onBlur={() => {
+            if (!locked) {
+              setFocused(false);
+            }
+          }}
+          validate={(value) => (validate ? validate(value) : null)}
+          required={required}
         />
       ) : (
         <Field
@@ -64,11 +80,26 @@ const Text: FunctionComponent<TextProps> = (props: TextProps) => {
           type={type}
           placeholder={label}
           component="textarea"
-          onFocus={() => !locked && setFocused(true)}
-          onBlur={() => !locked && setFocused(false)}
+          onFocus={() => {
+            if (!locked) {
+              setFocused(true);
+            }
+          }}
+          onBlur={() => {
+            if (!locked) {
+              setFocused(false);
+            }
+          }}
         />
       )}
-      <label className={error && "error"}>{error || label}</label>
+      <label
+        className={classNames({
+          error: fieldError && !focused,
+        })}
+        htmlFor={`${fieldName}`}
+      >
+        {fieldError && !focused ? fieldError : label}
+      </label>
     </div>
   );
 };

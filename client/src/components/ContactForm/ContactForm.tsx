@@ -51,50 +51,60 @@ const ContactForm = () => {
           values: true,
           valid: true,
           pristine: true,
+          active: true,
         }}
-        render={({ handleSubmit, values, valid, form }) => {
-          console.log("values", values);
+        render={({ handleSubmit, values, valid, form, errors, active }) => {
+          console.log("form", form);
           return (
             <form className="form-body" onSubmit={handleSubmit}>
               <div className="field-group">
                 <Text
                   locked={false}
-                  active={false}
                   label={"Name"}
                   type={"text"}
                   fieldName="name"
                   value={values.name}
+                  required={true}
+                  errors={errors}
+                  active={active}
+                  focus={form.focus}
                 />
               </div>
               <div className="field-group">
                 <Text
                   locked={false}
-                  active={false}
                   label={"Email"}
                   type={"text"}
                   validate={validate.email}
                   fieldName="email"
                   value={values.email}
+                  errors={errors}
+                  active={active}
+                  focus={form.focus}
                 />
               </div>
               <div className="field-group">
                 <Text
                   locked={false}
-                  active={false}
                   label={"Subject"}
                   type={"text"}
                   fieldName="subject"
                   value={values.subject}
+                  errors={errors}
+                  active={active}
+                  focus={form.focus}
                 />
               </div>
               <div className="field-group">
                 <Textarea
                   locked={false}
-                  active={false}
                   label={"Message"}
                   type={"text"}
                   fieldName="message"
                   value={values.message}
+                  errors={errors}
+                  active={active}
+                  focus={form.focus}
                 />
               </div>
               <div className="submit">
