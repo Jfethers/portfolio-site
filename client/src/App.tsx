@@ -12,25 +12,6 @@ const email = {
 };
 
 const App = () => {
-  const send = () => {
-    fetch("/api/send", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: email.name,
-        email: email.email,
-        subject: email.subject,
-        message: email.message,
-      }),
-    })
-      .then((res) => res.json())
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <>
       <Navigation />

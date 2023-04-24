@@ -8,7 +8,7 @@ import * as validate from "../../utils/validations";
 const ContactForm = () => {
   const [showEasterEgg, setShowEasterEgg] = useState(false);
 
-  const onSubmit = (
+  const onSubmit = async (
     values: {
       name: string;
       email: string;
@@ -17,10 +17,10 @@ const ContactForm = () => {
     },
     form: { reset: Function }
   ) => {
-    fetch("/send", {
+    await fetch("/api/send", {
       method: "post",
       headers: {
-        "Content - Type": "application / json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name: values.name,
@@ -30,10 +30,6 @@ const ContactForm = () => {
       }),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log("data", data);
-        form.reset();
-      })
       .catch((err) => {
         console.log(err);
       });
