@@ -1,15 +1,17 @@
-.avatar {
-  height: 250px;
-  width: 250px;
-  overflow: hidden;
-  border-radius: 50%;
-  border: 5px solid $red;
-
-  .avatar-img {
-    background-image: url("../../assets/images/jill.jpg");
-    width: 250px;
+@media (min-width: 320px) {
+  .avatar {
     height: 250px;
-    background-size: cover;
-    background-repeat: none;
+    width: 250px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 5px solid $red;
+
+    .avatar-img {
+      background-image: url("../../assets/images/jill.jpg");
+      width: 250px;
+      height: 250px;
+      background-size: cover;
+      background-repeat: none;
+    }
   }
 }
