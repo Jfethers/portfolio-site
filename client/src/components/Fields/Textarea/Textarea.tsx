@@ -16,6 +16,7 @@ type TextareaProps = {
   fieldName: string;
   errors?: object;
   focus: Function;
+  pristine: boolean;
 };
 
 type TextareaState = {
@@ -24,7 +25,6 @@ type TextareaState = {
   error?: string;
   label?: string;
   active?: string;
-  locked?: boolean;
   onChange?: () => "";
 };
 
@@ -32,12 +32,11 @@ const Textarea: FunctionComponent<TextareaProps> = (props: TextareaProps) => {
   const [error, setError] = useState(props.error || "");
   const [label, setLabel] = useState(props.label || "Label");
 
-  const { locked, fieldName, value, errors, active, focus } = props;
+  const { fieldName, value, errors, active, focus, pristine } = props;
 
   return (
     <Text
       label={label}
-      locked={locked}
       active={active}
       error={error}
       type="textarea"
@@ -45,6 +44,7 @@ const Textarea: FunctionComponent<TextareaProps> = (props: TextareaProps) => {
       value={value}
       errors={errors}
       focus={focus}
+      pristine={pristine}
     />
   );
 };

@@ -7,10 +7,9 @@ type TextProps = {
   focused?: boolean;
   value?: string;
   error?: string;
-  label?: string;
+  label: string;
   onChange?: Function;
   active?: string;
-  locked?: boolean;
   predicted?: string;
   type: string;
   validate?: Function;
@@ -18,15 +17,14 @@ type TextProps = {
   required?: boolean;
   errors?: object;
   focus: Function;
+  pristine: boolean;
 };
 
 type TextState = {
   focused?: false;
   value?: string;
   error?: string;
-  label?: string;
   active?: string;
-  locked?: boolean;
   onChange?: () => "";
 };
 
@@ -34,71 +32,58 @@ const Text: FunctionComponent<TextProps> = (props: TextProps) => {
   const fieldKey = props.fieldName as keyof typeof props.errors;
   let fieldError = props.errors && props.errors[fieldKey];
 
-  // const [active, setActive] = useState(props.locked && props.active);
+  const [focused, setFocused] = useState(props.focused || false);
 
-  const [label, setLabel] = useState(props.label || "Label");
-  const [focused, setFocused] = useState(
-    (props.locked && props.focused) || false
-  );
+  const {
+    type,
+    fieldName,
+    value,
+    validate,
+    required,
+    active,
+    focus,
+    label,
+    pristine,
+  } = props;
 
-  const { locked, type, fieldName, value, validate, required, active, focus } =
-    props;
-
-  console.log("fieldError", fieldError);
   return (
     <div
       className={classNames({
         field: true,
         [`${type}`]: true,
-        active: locked ? active : active || value,
-        locked: locked && !active,
-        focused: locked ? active : active || value,
+        focused: active || value,
+        active: focused || value,
+        error: fieldError && !focused && !pristine,
       })}
     >
       {type === "text" ? (
-        <Field
-          name={fieldName}
-          type={type}
-          placeholder={label}
-          component="input"
-          onFocus={() => {
-            if (!locked) {
-              setFocused(true);
-            }
+        <input
+          {...{
+            value: value,
+            placeholder: label,
+            onBlur: () => setFocused(false),
+            onFocus: () => setFocused(true),
+            type: "text",
           }}
-          onBlur={() => {
-            if (!locked) {
-              setFocused(false);
-            }
-          }}
-          validate={(value) => (validate ? validate(value) : null)}
-          required={required}
         />
       ) : (
-        <Field
-          name={fieldName}
-          type={type}
-          placeholder={label}
-          component="textarea"
-          onFocus={() => {
-            if (!locked) {
-              setFocused(true);
-            }
-          }}
-          onBlur={() => {
-            if (!locked) {
-              setFocused(false);
-            }
+        <textarea
+          {...{
+            value: value,
+            placeholder: label,
+            onBlur: () => setFocused(false),
+            onFocus: () => setFocused(true),
+            type: "textarea",
           }}
         />
       )}
       <label
-        className={classNames({
-          error: fieldError && !focused,
-        })}
         htmlFor={`${fieldName}`}
+        className={classNames({
+          error: fieldError && !focused && !active,
+        })}
       >
-        {fieldError && !focused ? fieldError : label}
+        {fieldError && !focused && !active ? fieldError : label}
       </label>
     </div>
   );

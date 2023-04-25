@@ -53,26 +53,34 @@ const ContactForm = () => {
           pristine: true,
           active: true,
         }}
-        render={({ handleSubmit, values, valid, form, errors, active }) => {
+        render={({ handleSubmit, values, valid, form, errors, pristine }) => {
           console.log("form", form);
           return (
             <form className="form-body" onSubmit={handleSubmit}>
               <div className="field-group">
-                <Text
-                  locked={false}
-                  label={"Name"}
-                  type={"text"}
-                  fieldName="name"
-                  value={values.name}
-                  required={true}
-                  errors={errors}
-                  active={active}
-                  focus={form.focus}
-                />
+                <Field name="name">
+                  {(props) => {
+                    return (
+                      <div>
+                        <Text
+                          onChange={props.input.onChange}
+                          label={"Name"}
+                          type={"text"}
+                          fieldName="name"
+                          value={values.name}
+                          required={true}
+                          validate={validate.required}
+                          errors={errors}
+                          focus={form.focus}
+                          pristine={pristine}
+                        />
+                      </div>
+                    );
+                  }}
+                </Field>
               </div>
               <div className="field-group">
-                <Text
-                  locked={false}
+                {/* <Text
                   label={"Email"}
                   type={"text"}
                   validate={validate.email}
@@ -81,11 +89,11 @@ const ContactForm = () => {
                   errors={errors}
                   active={active}
                   focus={form.focus}
-                />
+                  pristine={pristine}
+                /> */}
               </div>
               <div className="field-group">
-                <Text
-                  locked={false}
+                {/* <Text
                   label={"Subject"}
                   type={"text"}
                   fieldName="subject"
@@ -93,11 +101,11 @@ const ContactForm = () => {
                   errors={errors}
                   active={active}
                   focus={form.focus}
-                />
+                  pristine={pristine}
+                /> */}
               </div>
               <div className="field-group">
-                <Textarea
-                  locked={false}
+                {/* <Textarea
                   label={"Message"}
                   type={"text"}
                   fieldName="message"
@@ -105,7 +113,8 @@ const ContactForm = () => {
                   errors={errors}
                   active={active}
                   focus={form.focus}
-                />
+                  pristine={pristine}
+                /> */}
               </div>
               <div className="submit">
                 <Button onClick={() => onSubmit(values, form)} type="submit">

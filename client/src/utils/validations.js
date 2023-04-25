@@ -12,3 +12,9 @@ export const email = (input) => {
     return "Please enter a valid email";
   }
 };
+
+export const required = (input) => {
+  if (!input) {
+    return "Field is required";
+  } else return undefined;
+};

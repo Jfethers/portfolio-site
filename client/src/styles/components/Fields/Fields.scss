@@ -30,6 +30,12 @@
   color: $gray;
 }
 
+.field.error input + label {
+  top: 4px;
+  opacity: 1;
+  color: $red;
+}
+
 .field.locked {
   pointer-events: none;
 }
