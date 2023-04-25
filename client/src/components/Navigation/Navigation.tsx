@@ -12,13 +12,13 @@ import {
 const Navigation = () => {
   const [showModal, setShowModal] = useState(false);
   const [matches, setMatches] = useState(
-    window.matchMedia("(min-width: 768px)").matches
+    window.matchMedia("(min-width: 600px)").matches
   );
   const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
     window
-      .matchMedia("(min-width: 768px)")
+      .matchMedia("(min-width: 600px)")
       .addEventListener("change", (e) => setMatches(e.matches));
   }, []);
 
