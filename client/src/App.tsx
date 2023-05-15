@@ -4,21 +4,14 @@ import AboutMe from "./components/About/AboutMe";
 import "./App.scss";
 import Tiles from "./components/Tiles/Tiles";
 
-const email = {
-  name: "Jill",
-  email: "jillfetherston@gmail.com",
-  subject: "email subject",
-  message: "email message",
-};
-
 const App = () => {
-  return (
-    <>
-      <Navigation />
-      <AboutMe />
-      <Tiles />
-    </>
-  );
+	return (
+		<>
+			<Navigation />
+			<AboutMe />
+			<Tiles />
+		</>
+	);
 };
 
 export default App;
