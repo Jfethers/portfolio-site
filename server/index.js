@@ -14,31 +14,32 @@ var jsonParser = bodyParser.json();
 app.use(express.json()); // <==== parse request body as JSON
 
 const transporter = nodemailer.createTransport(
-  sendGridTransport({
-    auth: {
-      api_key: SENDGRID_API,
-    },
-  })
+	sendGridTransport({
+		auth: {
+			api_key: SENDGRID_API,
+		},
+	})
 );
 
 app.get("/api", jsonParser, (req, res) => {
-  res.json({ message: "Hello from server!" });
+	res.json({ message: "Hello from server!" });
 });
 
 app.post("/api/send", (req, res) => {
-  transporter
-    .sendMail({
-      to: "jillfetherston@gmail.com",
-      from: req.body.email,
-      subject: req.body.subject,
-      html: `<h3>${req.body.name}</h3>
-  <p>${req.body.message}</p>`,
-    })
-    .then((resp) => {
-      res.json({ resp });
-    });
+	transporter
+		.sendMail({
+			to: "jillfetherston@gmail.com",
+			from: "jillfetherston@gmail.com",
+			subject: req.body.subject,
+			html: `<h3>${req.body.name}</h3>
+  <p>${req.body.message}</p>
+	<p>from: ${req.body.email}</p>`,
+		})
+		.then((resp) => {
+			res.json({ resp });
+		});
 });
 
 app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
+	console.log(`Server listening on ${PORT}`);
 });

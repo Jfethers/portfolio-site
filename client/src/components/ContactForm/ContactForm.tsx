@@ -15,7 +15,6 @@ const TextFieldAdapter = ({ input, meta, label, placeholder, ...rest }) => {
 			<Input
 				{...input}
 				placeholder={placeholder}
-				label={label}
 				id='outlined-basic'
 				variant='outlined'
 				size='lg'
@@ -32,7 +31,6 @@ const TexAreaFieldAdapter = ({ input, meta, label, placeholder, ...rest }) => {
 			<Textarea
 				{...input}
 				minRows={2}
-				label={label}
 				id='outlined-basic'
 				variant='outlined'
 				placeholder={placeholder}
@@ -97,7 +95,6 @@ const ContactForm = () => {
 									floatingLabelText='Name'
 									label='Name'
 									multiline={false}
-									className='field'
 									placeholder='name'
 									required={true}
 								/>
@@ -111,7 +108,6 @@ const ContactForm = () => {
 									floatingLabelText='Email'
 									label='Email'
 									multiline={false}
-									className='field'
 									placeholder='email'
 									required={true}
 								/>
@@ -125,14 +121,13 @@ const ContactForm = () => {
 									floatingLabelText='Subject'
 									label='Subject'
 									multiline={false}
-									className='field'
 									placeholder='subject'
 									required={true}
 								/>
 							</div>
 							<div className='field'>
 								<Field
-									name='Message'
+									name='message'
 									component={TexAreaFieldAdapter}
 									validate={required}
 									hintText='Message'
@@ -140,16 +135,15 @@ const ContactForm = () => {
 									label='Message'
 									multiline={true}
 									minRows={10}
-									className='field'
 									placeholder='message'
 									required={true}
 								/>
 							</div>
 
 							<div className='buttons'>
-								<button type='submit' disabled={submitting}>
+								<Button type='submit' disabled={submitting}>
 									Submit
-								</button>
+								</Button>
 							</div>
 						</form>
 					)}
