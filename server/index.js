@@ -32,8 +32,9 @@ app.post("/api/send", (req, res) => {
 			from: "jillfetherston@gmail.com",
 			subject: req.body.subject,
 			html: `<h3>${req.body.name}</h3>
-  <p>${req.body.message}</p>
-	<p>from: ${req.body.email}</p>`,
+			<h3>from: ${req.body.email}</h3>
+			<p>${req.body.message}</p>
+			`,
 		})
 		.then((resp) => {
 			res.json({ resp });

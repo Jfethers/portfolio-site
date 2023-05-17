@@ -40,7 +40,10 @@ const TexAreaFieldAdapter = ({ input, meta, label, placeholder, ...rest }) => {
 	);
 };
 
-const ContactForm = () => {
+type ContactFormProps = {
+	setShowModal: Function;
+};
+const ContactForm = (props: ContactFormProps) => {
 	const [showEasterEgg, setShowEasterEgg] = useState(false);
 
 	const onSubmit = async (
@@ -64,7 +67,11 @@ const ContactForm = () => {
 				message: values.message,
 			}),
 		})
-			.then((res) => res.json())
+			.then((res) => {
+				res.json();
+				props.setShowModal(false);
+				form.reset();
+			})
 			.catch((err) => {
 				console.log(err);
 			});
