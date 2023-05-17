@@ -1,6 +1,4 @@
 export const email = (input) => {
-	console.log("input", input);
-
 	const validEmail = String(input)
 		.toLocaleLowerCase()
 		.match(

@@ -100,7 +100,9 @@ const ContactForm = () => {
 											label='Name'
 											placeholder='name'
 										/>
-										{meta.error && meta.touched && <span>{meta.error}</span>}
+										{meta.error && meta.touched && (
+											<span className='error'>{meta.error}</span>
+										)}
 									</div>
 								)}
 							</Field>
@@ -121,7 +123,9 @@ const ContactForm = () => {
 											label='Email'
 											placeholder='email'
 										/>
-										{meta.error && meta.touched && <span>{meta.error}</span>}
+										{meta.error && meta.touched && (
+											<span className='error'>{meta.error}</span>
+										)}
 									</div>
 								)}
 							</Field>
@@ -136,7 +140,9 @@ const ContactForm = () => {
 											label='Subject'
 											placeholder='subject'
 										/>
-										{meta.error && meta.touched && <span>{meta.error}</span>}
+										{meta.error && meta.touched && (
+											<span className='error'>{meta.error}</span>
+										)}
 									</div>
 								)}
 							</Field>
@@ -151,7 +157,9 @@ const ContactForm = () => {
 											label='Message'
 											placeholder='message'
 										/>
-										{meta.error && meta.touched && <span>{meta.error}</span>}
+										{meta.error && meta.touched && (
+											<span className='error'>{meta.error}</span>
+										)}
 									</div>
 								)}
 							</Field>
