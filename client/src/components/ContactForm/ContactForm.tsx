@@ -2,31 +2,43 @@ import React, { KeyboardEvent, useState } from "react";
 import { Form, Field } from "react-final-form";
 import Button from "../Button/Button";
 import * as validate from "../../utils/validations";
-import { TextField } from "@mui/material";
 import Textarea from "@mui/joy/Textarea";
 
+import FormLabel from "@mui/joy/FormLabel";
+import Input from "@mui/joy/Input";
+
 // @ts-ignore
-const TextFieldAdapter = ({ input, meta, label, ...rest }) => {
+const TextFieldAdapter = ({ input, meta, label, placeholder, ...rest }) => {
 	return (
-		<TextField
-			{...input}
-			label={label}
-			id='outlined-basic'
-			variant='outlined'
-		/>
+		<>
+			<FormLabel>{label}</FormLabel>
+			<Input
+				{...input}
+				placeholder={placeholder}
+				label={label}
+				id='outlined-basic'
+				variant='outlined'
+				size='lg'
+			/>
+		</>
 	);
 };
 
 //@ts-ignore
-const TexAreaFieldAdapter = ({ input, meta, label, ...rest }) => {
+const TexAreaFieldAdapter = ({ input, meta, label, placeholder, ...rest }) => {
 	return (
-		<Textarea
-			{...input}
-			minRows={2}
-			label={label}
-			id='outlined-basic'
-			variant='outlined'
-		/>
+		<>
+			<FormLabel>{label}</FormLabel>
+			<Textarea
+				{...input}
+				minRows={2}
+				label={label}
+				id='outlined-basic'
+				variant='outlined'
+				placeholder={placeholder}
+				size='lg'
+			/>
+		</>
 	);
 };
 
@@ -44,23 +56,22 @@ const ContactForm = () => {
 		},
 		form: { reset: Function }
 	) => {
-		console.log("values", values);
-		// await fetch("/api/send", {
-		// 	method: "post",
-		// 	headers: {
-		// 		"Content-Type": "application/json",
-		// 	},
-		// 	body: JSON.stringify({
-		// 		name: values.name,
-		// 		email: values.email,
-		// 		subject: values.subject,
-		// 		message: values.message,
-		// 	}),
-		// })
-		// 	.then((res) => res.json())
-		// 	.catch((err) => {
-		// 		console.log(err);
-		// 	});
+		await fetch("/api/send", {
+			method: "post",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				name: values.name,
+				email: values.email,
+				subject: values.subject,
+				message: values.message,
+			}),
+		})
+			.then((res) => res.json())
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 	return (
 		<>
@@ -77,55 +88,62 @@ const ContactForm = () => {
 					onSubmit={onSubmit}
 					render={({ handleSubmit, form, submitting, pristine, values }) => (
 						<form onSubmit={handleSubmit} className='form-body'>
-							<div className='row'>
-								<div className='column'>
-									<Field
-										name='name'
-										component={TextFieldAdapter}
-										validate={required}
-										hintText='Name'
-										floatingLabelText='Name'
-										label='Name'
-										multiline={false}
-									/>
-								</div>
-								<div className='column'>
-									<Field
-										name='email'
-										component={TextFieldAdapter}
-										validate={required}
-										hintText='Email'
-										floatingLabelText='Email'
-										label='Email'
-										multiline={false}
-									/>
-								</div>
+							<div className='field'>
+								<Field
+									name='name'
+									component={TextFieldAdapter}
+									validate={required}
+									hintText='Name'
+									floatingLabelText='Name'
+									label='Name'
+									multiline={false}
+									className='field'
+									placeholder='name'
+									required={true}
+								/>
 							</div>
-							<div className='row'>
-								<div className='double-coloumn'>
-									<Field
-										name='subject'
-										component={TextFieldAdapter}
-										validate={required}
-										hintText='Subject'
-										floatingLabelText='Subject'
-										label='Subject'
-										multiline={false}
-									/>
-								</div>
-
-								<div className='double-coloumn'>
-									<Field
-										name='Message'
-										component={TexAreaFieldAdapter}
-										validate={required}
-										hintText='Message'
-										floatingLabelText='Message'
-										label='Message'
-										multiline={true}
-										minRows={10}
-									/>
-								</div>
+							<div className='field'>
+								<Field
+									name='email'
+									component={TextFieldAdapter}
+									validate={required}
+									hintText='Email'
+									floatingLabelText='Email'
+									label='Email'
+									multiline={false}
+									className='field'
+									placeholder='email'
+									required={true}
+								/>
+							</div>
+							<div className='field'>
+								<Field
+									name='subject'
+									component={TextFieldAdapter}
+									validate={required}
+									hintText='Subject'
+									floatingLabelText='Subject'
+									label='Subject'
+									multiline={false}
+									className='field'
+									placeholder='subject'
+									required={true}
+								/>
+							</div>
+							<div className='field'>
+								<Field
+									name='Message'
+									component={TexAreaFieldAdapter}
+									validate={required}
+									hintText='Message'
+									floatingLabelText='Message'
+									label='Message'
+									multiline={true}
+									minRows={10}
+									className='field'
+									placeholder='message'
+									required={true}
+								/>
 							</div>
 
 							<div className='buttons'>
