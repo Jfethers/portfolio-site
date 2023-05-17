@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, useState } from "react";
+import React, { useState } from "react";
 import { Form, Field } from "react-final-form";
 import Button from "../Button/Button";
 import * as validate from "../../utils/validations";
@@ -40,8 +40,6 @@ const TexAreaFieldAdapter = ({ input, meta, label, placeholder, ...rest }) => {
 	);
 };
 
-const required = (value: string) => (value ? undefined : "Required");
-
 const ContactForm = () => {
 	const [showEasterEgg, setShowEasterEgg] = useState(false);
 
@@ -72,84 +70,102 @@ const ContactForm = () => {
 			});
 	};
 	return (
-		<>
-			<div className='form'>
-				<h1>Say Hi</h1>
-				<div onClick={() => setShowEasterEgg(!showEasterEgg)}>
-					{showEasterEgg ? (
-						<p>or maybe I am, idk.</p>
-					) : (
-						<p>(I'm not doing weird things like collecting emails)</p>
-					)}
-				</div>
-				<Form
-					onSubmit={onSubmit}
-					render={({ handleSubmit, form, submitting, pristine, values }) => (
-						<form onSubmit={handleSubmit} className='form-body'>
-							<div className='field'>
-								<Field
-									name='name'
-									component={TextFieldAdapter}
-									validate={required}
-									hintText='Name'
-									floatingLabelText='Name'
-									label='Name'
-									multiline={false}
-									placeholder='name'
-									required={true}
-								/>
-							</div>
-							<div className='field'>
-								<Field
-									name='email'
-									component={TextFieldAdapter}
-									validate={required}
-									hintText='Email'
-									floatingLabelText='Email'
-									label='Email'
-									multiline={false}
-									placeholder='email'
-									required={true}
-								/>
-							</div>
-							<div className='field'>
-								<Field
-									name='subject'
-									component={TextFieldAdapter}
-									validate={required}
-									hintText='Subject'
-									floatingLabelText='Subject'
-									label='Subject'
-									multiline={false}
-									placeholder='subject'
-									required={true}
-								/>
-							</div>
-							<div className='field'>
-								<Field
-									name='message'
-									component={TexAreaFieldAdapter}
-									validate={required}
-									hintText='Message'
-									floatingLabelText='Message'
-									label='Message'
-									multiline={true}
-									minRows={10}
-									placeholder='message'
-									required={true}
-								/>
-							</div>
-
-							<div className='buttons'>
-								<Button type='submit' disabled={submitting}>
-									Submit
-								</Button>
-							</div>
-						</form>
-					)}
-				/>
+		<div className='form'>
+			<h1>Say Hi</h1>
+			<div onClick={() => setShowEasterEgg(!showEasterEgg)}>
+				{showEasterEgg ? (
+					<p>or maybe I am, idk.</p>
+				) : (
+					<p>(I'm not doing weird things like collecting emails)</p>
+				)}
 			</div>
-		</>
+			<Form
+				onSubmit={onSubmit}
+				render={({
+					handleSubmit,
+					form,
+					submitting,
+					pristine,
+					values,
+					valid,
+				}) => (
+					<form onSubmit={handleSubmit} className='form-body'>
+						<div className='field'>
+							<Field name='name' validate={validate.required}>
+								{({ input, meta }) => (
+									<div>
+										<TextFieldAdapter
+											input={input}
+											meta={meta}
+											label='Name'
+											placeholder='name'
+										/>
+										{meta.error && meta.touched && <span>{meta.error}</span>}
+									</div>
+								)}
+							</Field>
+						</div>
+						<div className='field'>
+							<Field
+								name='email'
+								validate={validate.composeValidators(
+									validate.required,
+									validate.email
+								)}
+							>
+								{({ input, meta }) => (
+									<div>
+										<TextFieldAdapter
+											input={input}
+											meta={meta}
+											label='Email'
+											placeholder='email'
+										/>
+										{meta.error && meta.touched && <span>{meta.error}</span>}
+									</div>
+								)}
+							</Field>
+						</div>
+						<div className='field'>
+							<Field name='subject' validate={validate.required}>
+								{({ input, meta }) => (
+									<div>
+										<TextFieldAdapter
+											input={input}
+											meta={meta}
+											label='Subject'
+											placeholder='subject'
+										/>
+										{meta.error && meta.touched && <span>{meta.error}</span>}
+									</div>
+								)}
+							</Field>
+						</div>
+						<div className='field'>
+							<Field name='message' validate={validate.required}>
+								{({ input, meta }) => (
+									<div>
+										<TexAreaFieldAdapter
+											input={input}
+											meta={meta}
+											label='Message'
+											placeholder='message'
+										/>
+										{meta.error && meta.touched && <span>{meta.error}</span>}
+									</div>
+								)}
+							</Field>
+						</div>
+
+						<div className='buttons'>
+							<Button type='submit' disabled={pristine || !valid || submitting}>
+								Submit
+							</Button>
+						</div>
+					</form>
+				)}
+			/>
+		</div>
 	);
 };
 export default ContactForm;
