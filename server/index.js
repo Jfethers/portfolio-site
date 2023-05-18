@@ -7,11 +7,7 @@ const nodemailer = require("nodemailer");
 const sendGridTransport = require("nodemailer-sendgrid-transport");
 const { SENDGRID_API } = require("../config/keys");
 
-// body parser
-const bodyParser = require("body-parser");
-var jsonParser = bodyParser.json();
-
-app.use(express.json()); // <==== parse request body as JSON
+app.use(express.json());
 
 const transporter = nodemailer.createTransport(
 	sendGridTransport({
@@ -20,10 +16,6 @@ const transporter = nodemailer.createTransport(
 		},
 	})
 );
-
-app.get("/api", jsonParser, (req, res) => {
-	res.json({ message: "Hello from server!" });
-});
 
 app.post("/api/send", (req, res) => {
 	transporter

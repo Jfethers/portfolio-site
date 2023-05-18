@@ -8,14 +8,17 @@
 	font-weight: 700;
 	text-transform: uppercase;
 	font-size: 13px;
-	letter-spacing: .5px;
+	letter-spacing: 0.5px;
 	border: none;
 	cursor: pointer;
 
 	&:hover {
 		filter: brightness(85%);
 	}
-
 	transition: filter 200ms ease-in;
-
+	&.disabled {
+		background-color: $gray;
+		cursor: auto;
+		pointer-events: none;
+	}
 }

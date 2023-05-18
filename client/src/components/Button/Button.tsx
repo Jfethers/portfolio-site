@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import classNames from "classnames";
 
 interface IButtonProps {
 	size?: string;
@@ -11,18 +12,18 @@ interface IButtonProps {
 }
 
 const Button: FunctionComponent<IButtonProps> = (props: IButtonProps) => {
-	const { children, type } = props;
+	const { children, type, disabled } = props;
 
 	return (
-		<>
-			<button
-				type={type}
-				className='button'
-				onClick={() => props.onClick && props.onClick()}
-			>
-				{children}
-			</button>
-		</>
+		<button
+			type={type}
+			className={classNames("button", {
+				disabled: disabled,
+			})}
+			onClick={() => props.onClick && props.onClick()}
+		>
+			{children}
+		</button>
 	);
 };
 

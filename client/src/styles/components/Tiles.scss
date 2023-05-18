@@ -1,22 +1,26 @@
 @media (min-width: 320px) {
-  .project-copy {
-    width: 90%;
-    margin: auto;
-    text-align: center;
-  }
+	.project-copy {
+		width: 90%;
+		margin: auto;
+		text-align: center;
+	}
 
-  .tiles {
-    position: relative;
-    display: flex;
-    flex-flow: row wrap;
-    align-content: flex-start;
-    justify-content: center;
-  }
+	.tiles {
+		position: relative;
+		display: flex;
+		flex-flow: row wrap;
+		align-content: flex-start;
+		justify-content: center;
+	}
 
-  .pill-wrapper {
-    flex-flow: row wrap;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-  }
+	.pill-wrapper {
+		flex-flow: row wrap;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+	}
+}
+
+.project-copy {
+	width: 55%;
 }

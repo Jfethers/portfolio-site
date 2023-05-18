@@ -2,6 +2,19 @@
 
 const projectData = [
 	{
+		key: "catalogIngestion",
+		title: "Catalog Ingestion",
+		subHeading: "My first foray into the world of backend",
+		job: "Boxed",
+		description: [
+			[
+				"In my final 6 or so months of my time at Boxed, there was an initiative to make all engineers fullstack. So I found myself on a team with other back end engineers writing the catalog [read: product] ingestion software for the enterprise business venture we were calling Spresso. Our main objective was to find a way to ingest this csv of products and from that parse the data, structure the various complex relationships, and upsert them to the database via mongoose.",
+			],
+		],
+		tech: ["Typescript", "Javascript", "Mongo"],
+		color: "paynesGray",
+	},
+	{
 		key: "knitCounter",
 		title: "Knit Counter",
 		subHeading: "Just keep knitting...",
@@ -38,7 +51,7 @@ const projectData = [
 				"There is a lot of logic that goes into what you see in Boxed's navigation. If you're a B2B customer you would undoubtedly see something different than a B2C customer. You might see one thing if you're in California and something all together different in Maine.",
 			],
 			[
-				"Prior to this project, our web engineers were asked to release Boxed Web to production just hard coding these changes. It was a broken-step type of problem - they were managing it and it was a pain but no one had the time / resources to fix it. Alongside our api team, I implemented a new tool which would allow the folks over at Marketing to set custom navigations per navigation type. Boxed web was relieved to no longer own this responsiblity!",
+				"Prior to this project, our web engineers were asked to release Boxed Web to production just hard coding these changes. It was a broken-step type of problem - they were managing it and it was a pain but no one had the time / resources to fix it. Alongside our api team, I implemented a new tool which would allow the folks over at Marketing to set custom navigations per navigation type. Boxed web was relieved to no longer own this responsibility!",
 			],
 		],
 		tech: ["React", "React Final Form"],
@@ -54,7 +67,7 @@ const projectData = [
 				"I was presented with an ask to allow for the reordering of variants in drop downs. If you're viewing a product page with variant options, it would be nice if we (us at Boxed, not casual Boxed users) could change the order of variants in the drop down",
 			],
 			[
-				"Adding the ability to drag and drop variants was a quick and easy way to add impactful dynamicism to the Boxed website ",
+				"Adding the ability to drag and drop variants was a quick and easy way to give non engineers the power to make impactful yet safe changes to Boxed Web",
 			],
 		],
 		tech: ["React", "React Final Form"],
@@ -80,7 +93,7 @@ const projectData = [
 		job: "Boxed",
 		description: [
 			[
-				"I was asked to research whether or not Remix would be a beneficial to our platform or not. I created a quick app utilizing Ravelry's free API all built on Remix",
+				"This was a research project I undertook during my time at Boxed. My manager was curious what working with Remix was like and whether or not it would be a good tool for our internal tools platform. I created a quick app utilizing Ravelry's free API all built on Remix",
 			],
 		],
 		tech: ["Remix", "React"],
@@ -94,7 +107,7 @@ const projectData = [
 		job: "Boxed",
 		description: [
 			[
-				"Boxed has literally thousands of products organized in complex hierarchies of categories nested within categories. I took on the task of redesigning the category page to use a better tree model! Cut down on load time and made navigating categories much easier",
+				"Boxed had literally thousands of products organized in complex hierarchies of categories nested within categories. I took on the task of redesigning the category page to use a better tree model! Cut down on load time and made navigating categories much easier",
 			],
 		],
 		color: "zomp",
@@ -103,7 +116,8 @@ const projectData = [
 	{
 		key: "auditLogs",
 		title: "Tools Platform Audit Logs",
-		subHeading: "Snitches get stitches...",
+		subHeading:
+			"People often joke that in order to understand recursion you first must understand recursion...",
 		job: "Boxed",
 		description: [
 			[
@@ -152,10 +166,13 @@ const projectData = [
 		job: "Zola",
 		description: [
 			[
-				"This was a really fun project and was a great learning experience. The premise of the project was to solve a problem that happenend quite a bit - A guest tries to RSVP to a couples' wedding only to realize they aren't on the guest list. ",
+				"This was a really fun project and was a great learning experience. The premise of the project was to solve a problem that happened quite a bit - A guest tries to RSVP to a couples' wedding only to realize they aren't on the guest list. ",
 			],
 			[
 				"Previously, the only solution for guests in this predicament was copy telling them to call Zola customer service. This resulted in a lot of really weird mediation between Zola Customer Care, the couple, and the guests, as we all came together to figure out what the issue is. More often than not, its a misspelling on the couples's part. As someone who misspelled my father in law's name I can lend some anecdotal evidence on the issue.",
+			],
+			[
+				"The solution to this problem was a new flow for this use case. If a potential guest could't find their name in the RSVP search copy would appear telling the guest to go ahead and email the couple through this handy form. The form submission did 2 things - it forward their query on to the couple for them to sort out and it also added a notification to their account that we could then fetch and render as a neat red dot on their dashboard letting them know this issue was outstanding.",
 			],
 		],
 		tech: ["React", "Redux", "Redux Forms", "Less", "Node"],

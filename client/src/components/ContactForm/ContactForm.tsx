@@ -3,7 +3,6 @@ import { Form, Field } from "react-final-form";
 import Button from "../Button/Button";
 import * as validate from "../../utils/validations";
 import Textarea from "@mui/joy/Textarea";
-
 import FormLabel from "@mui/joy/FormLabel";
 import Input from "@mui/joy/Input";
 
@@ -43,6 +42,7 @@ const TexAreaFieldAdapter = ({ input, meta, label, placeholder, ...rest }) => {
 type ContactFormProps = {
 	setShowModal: Function;
 };
+
 const ContactForm = (props: ContactFormProps) => {
 	const [showEasterEgg, setShowEasterEgg] = useState(false);
 
@@ -78,7 +78,7 @@ const ContactForm = (props: ContactFormProps) => {
 	};
 	return (
 		<div className='form'>
-			<h1>Say Hi</h1>
+			<h1>Say Hi!</h1>
 			<div onClick={() => setShowEasterEgg(!showEasterEgg)}>
 				{showEasterEgg ? (
 					<p>or maybe I am, idk.</p>
@@ -88,14 +88,7 @@ const ContactForm = (props: ContactFormProps) => {
 			</div>
 			<Form
 				onSubmit={onSubmit}
-				render={({
-					handleSubmit,
-					form,
-					submitting,
-					pristine,
-					values,
-					valid,
-				}) => (
+				render={({ handleSubmit, submitting, pristine, valid }) => (
 					<form onSubmit={handleSubmit} className='form-body'>
 						<div className='field'>
 							<Field name='name' validate={validate.required}>
@@ -171,7 +164,6 @@ const ContactForm = (props: ContactFormProps) => {
 								)}
 							</Field>
 						</div>
-
 						<div className='buttons'>
 							<Button type='submit' disabled={pristine || !valid || submitting}>
 								Submit
