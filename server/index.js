@@ -2,12 +2,19 @@
 const express = require("express");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const path = require("path");
 // sendgrid
 const nodemailer = require("nodemailer");
 const sendGridTransport = require("nodemailer-sendgrid-transport");
 const { SENDGRID_API } = require("../config/keys");
 
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("/*", (req, res) => {
+	res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 const transporter = nodemailer.createTransport(
 	sendGridTransport({
