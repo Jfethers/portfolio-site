@@ -38,7 +38,7 @@ const Tile: FunctionComponent<ITileProps> = (props: ITileProps) => {
 					{project.description.map((description, index) => {
 						return <p key={index}>{description}</p>;
 					})}
-					{project.link && <a href={project.link}>{project.link}</a>}
+					{project.link && <a href={project.link}>{project.title}</a>}
 				</div>
 			</Modal>
 		</>

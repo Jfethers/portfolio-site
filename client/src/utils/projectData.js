@@ -2,6 +2,24 @@
 
 const projectData = [
 	{
+		key: "portfolioSite",
+		title: "Personal Site",
+		subHeading:
+			"Is it meta to talk about my personal site on my personal site..?",
+		job: "Personal Project",
+		description: [
+			[
+				"Probably. It's a CRA configured to use Typescript. It features a Node backend which integrates the Sendgrid api in order to send emails to me via the contact form.",
+			],
+			[
+				"I'm particularly pleased with the project tiles which feature a deliciously millennial-y muted rainbow. The colors are exported scss variables which the Tile component picks up and applies dynamically using a data file to source color along with content for a given project.",
+			],
+		],
+		tech: ["Typescript", "Javascript", "React", "Node"],
+		color: "darkCyan",
+		link: "https://github.com/Jfethers/portfolio-site",
+	},
+	{
 		key: "catalogIngestion",
 		title: "Catalog Ingestion",
 		subHeading: "My first foray into the world of backend",
@@ -139,6 +157,7 @@ const projectData = [
 		],
 		tech: ["Less", "Postgresql", "React"],
 		color: "paynesGray",
+		link: "https://www.zola.com/wedding-planning/website/designs",
 	},
 	{
 		key: "themeRedesign",
