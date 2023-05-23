@@ -3,7 +3,7 @@ const express = require("express");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const path = require("path");
-sendgrid;
+// sendgrid
 const nodemailer = require("nodemailer");
 const sendGridTransport = require("nodemailer-sendgrid-transport");
 const { SENDGRID_API } = require("../config/keys");
