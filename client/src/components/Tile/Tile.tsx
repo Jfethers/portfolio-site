@@ -7,10 +7,11 @@ import Pill from "../Pill/Pill";
 interface ITileProps {
 	key: string;
 	project: Project;
+	index: number;
 }
 
 const Tile: FunctionComponent<ITileProps> = (props: ITileProps) => {
-	const { project } = props;
+	const { project, index } = props;
 	const [showModal, setShowModal] = useState(false);
 	const tileKey = project.color as keyof typeof tileColors;
 	const tileColor = tileColors[tileKey];
@@ -18,7 +19,7 @@ const Tile: FunctionComponent<ITileProps> = (props: ITileProps) => {
 	return (
 		<>
 			<div
-				style={{ backgroundColor: tileColor }}
+				style={{ backgroundColor: tileColor, animationDelay: index / 6 + "s" }}
 				className='tile'
 				onClick={() => setShowModal(true)}
 			>

@@ -1,27 +1,43 @@
 .tile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 250px;
-    width: 250px;
-    display: flex;
-    margin: 5px;
-    color: $white;
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 700;
-    opacity: 1;
-    cursor: pointer;
-    &:hover {
-        filter: brightness(85%);
-    }
-    transition: filter 200ms ease-in;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 250px;
+	width: 250px;
+	display: flex;
+	margin: 5px;
+	color: $white;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 700;
+	// opacity: 1;
+
+	animation-duration: 500ms;
+	animation-name: slideIn;
+	animation-fill-mode: backwards;
+
+	overflow: hidden;
+
+	cursor: pointer;
+	&:hover {
+		filter: brightness(85%);
+	}
+	transition: filter 200ms ease-in;
 }
+
+@keyframes slideIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 .tile-contents {
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-    width: 500px;
-    
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+	width: 500px;
 }
