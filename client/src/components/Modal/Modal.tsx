@@ -13,6 +13,7 @@ const Modal: FunctionComponent<IModalProps> = (props: IModalProps) => {
 
 	return (
 		<div
+			onClick={() => setShowModal(false)}
 			className={classNames({
 				"modal-overlay": true,
 				active: showModal,
