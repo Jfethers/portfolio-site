@@ -8,3 +8,4 @@ server/build
 # client
 client/node_modules
 client/src/.DS_Store
+client/build
