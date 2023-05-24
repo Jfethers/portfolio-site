@@ -8,6 +8,7 @@ import {
 	AiOutlineLinkedin,
 	AiOutlineDownload,
 } from "react-icons/ai";
+import { GrDocumentDownload } from "react-icons/gr";
 
 const Navigation = () => {
 	const [showModal, setShowModal] = useState(false);
@@ -101,7 +102,7 @@ const Navigation = () => {
 				{matches && (
 					<div className='contact-icons'>
 						<div className='icon' onClick={downloadFile}>
-							<AiOutlineDownload />
+							<GrDocumentDownload className='resume-icon' />
 						</div>
 						<a
 							href='https://github.com/Jfethers'
