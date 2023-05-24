@@ -18,6 +18,10 @@ const Tiles = () => {
 					below can help you narrow down to technologies you're most interested
 					in.
 				</p>
+				<p>
+					Alternatively, my resume is available for download up at the top of
+					the page.
+				</p>
 			</div>
 			<div className='filters'>
 				<Filter setTiles={setTiles} tiles={tiles} setFiltering={setFiltering} />
