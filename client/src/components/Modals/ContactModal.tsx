@@ -3,20 +3,19 @@ import Modal from "../../modules/modal/components/Modal";
 import ModalBody from "../../modules/modal/components/ModalBody";
 import ModalHeader from "../../modules/modal/components/ModalHeader";
 import ModalFooter from "../../modules/modal/components/ModalFooter";
-import Pill from "../Pill/Pill";
 import { CgClose } from "react-icons/cg";
 import ContactForm from "../ContactForm/ContactForm";
 
 const ContactModal = (props: any) => {
-	const { project } = props;
+	const { close, modalRef } = props;
 	return (
-		<Modal modalRef={props.modalRef}>
+		<Modal modalRef={modalRef}>
 			<ModalHeader>
 				<h1>Say Hi!</h1>
-				<CgClose className='close' onClick={props.close} />
+				<CgClose className='close' onClick={close} />
 			</ModalHeader>
 			<ModalBody>
-				<ContactForm />
+				<ContactForm close={close} />
 			</ModalBody>
 			{/* <ModalFooter></ModalFooter> */}
 		</Modal>
