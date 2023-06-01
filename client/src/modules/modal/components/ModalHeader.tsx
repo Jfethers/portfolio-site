@@ -1,11 +1,6 @@
-import React, { FunctionComponent, ReactNode } from "react";
+import React, { ReactNode } from "react";
 
-type ModalHeaderProps = {
-	children?: ReactNode;
-};
-
-const ModalHeader: FunctionComponent = (props: ModalHeaderProps) => {
-	const { children } = props;
+const ModalHeader = ({ children }: { children: ReactNode }) => {
 	return <div className='modal-header'>{children}</div>;
 };
 

@@ -1,11 +1,6 @@
-import React, { FunctionComponent, ReactNode } from "react";
+import React, { ReactNode } from "react";
 
-type ModalBodyProps = {
-	children?: ReactNode;
-};
-
-const ModalBody: FunctionComponent = (props: ModalBodyProps) => {
-	const { children } = props;
+const ModalBody = ({ children }: { children: ReactNode }) => {
 	return <div className='modal-body'>{children}</div>;
 };
 

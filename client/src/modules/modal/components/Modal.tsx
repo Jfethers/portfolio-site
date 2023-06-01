@@ -1,14 +1,15 @@
-import React, { FunctionComponent, ReactNode } from "react";
+import React, { ReactNode, RefObject } from "react";
 
-type ModalProps = {
-	children?: ReactNode;
-};
-
-const Modal: FunctionComponent = (props: ModalProps) => {
-	const { children } = props;
+const Modal = ({
+	children,
+	modalRef,
+}: {
+	children: ReactNode;
+	modalRef: React.RefObject<HTMLDivElement>;
+}) => {
 	return (
-		<div className='modal-overlay'>
-			<div className='modal-dialog'>
+		<div className='modal-overlay active'>
+			<div className='modal-dialog' ref={modalRef}>
 				<div className='modal-content'>{children}</div>
 			</div>
 		</div>

@@ -1,22 +1,28 @@
-import React, {
-	FunctionComponent,
-	useEffect,
-	useState,
-	Component,
-} from "react";
+import { useEffect, useState, useRef, RefObject } from "react";
 import ModalService from "../services/ModalService";
-import styles from "../styles/ModalRoot.module.scss";
 
-type ModalRootProps = {};
-
-const ModalRoot: FunctionComponent<ModalRootProps> = (
-	props: ModalRootProps
-) => {
+const ModalRoot = () => {
 	const [modal, setModal] = useState<null | {
 		component: any;
 		props: any;
 		close: Function;
+		ref: React.RefObject<HTMLDivElement>;
 	}>(null);
+
+	const ref = useRef<HTMLDivElement>(null);
+
+	useOnClickOutside(ref, () => {
+		setModal(null);
+	});
+
+	const modalRootStyles = {
+		position: "fixed",
+		top: "0",
+		zIndex: "100",
+		width: "100vw",
+		height: "100vh",
+		backgroundColor: "rgba(1, 1, 1, 0.2)",
+	};
 
 	useEffect(() => {
 		// @ts-ignore
@@ -24,9 +30,10 @@ const ModalRoot: FunctionComponent<ModalRootProps> = (
 			setModal({
 				component,
 				props,
-				close: (value: string) => {
+				close: () => {
 					setModal(null);
 				},
+				ref,
 			});
 		});
 	}, []);
@@ -34,16 +41,37 @@ const ModalRoot: FunctionComponent<ModalRootProps> = (
 	const ModalComponent = modal?.component ? modal.component : null;
 
 	return (
-		<div className={ModalComponent ? styles.modalRoot : ""}>
+		<div style={ModalComponent && modalRootStyles}>
 			{ModalComponent && (
 				<ModalComponent
 					{...modal?.props}
 					close={modal?.close}
 					className={ModalComponent ? "d-block" : ""}
+					modalRef={modal?.ref}
 				/>
 			)}
 		</div>
 	);
 };
+
+function useOnClickOutside(ref: RefObject<HTMLDivElement>, handler: Function) {
+	useEffect(() => {
+		const listener = (event: MouseEvent | TouchEvent) => {
+			if (
+				(ref && !ref?.current) ||
+				(ref?.current && ref?.current.contains(event.target as Node))
+			) {
+				return;
+			}
+			handler(event);
+		};
+		document.addEventListener("mousedown", listener);
+		document.addEventListener("touchstart", listener);
+		return () => {
+			document.removeEventListener("mousedown", listener);
+			document.removeEventListener("touchstart", listener);
+		};
+	}, [ref, handler]);
+}
 
 export default ModalRoot;

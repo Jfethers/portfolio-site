@@ -1,11 +1,6 @@
-import React, { FunctionComponent, ReactNode } from "react";
+import React, { ReactNode } from "react";
 
-type ModalFooterProps = {
-	children?: ReactNode;
-};
-
-const ModalFooter: FunctionComponent = (props: ModalFooterProps) => {
-	const { children } = props;
+const ModalFooter = ({ children }: { children: ReactNode }) => {
 	return <div className='modal-footer'>{children}</div>;
 };
 
