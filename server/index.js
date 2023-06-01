@@ -3,6 +3,7 @@ const express = require("express");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const path = require("path");
+require("dotenv").config({ path: __dirname + "/./../.env" });
 // sendgrid
 const nodemailer = require("nodemailer");
 const sendGridTransport = require("nodemailer-sendgrid-transport");

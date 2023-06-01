@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Button from "../Button/Button";
-import Modal from "../Modal/Modal";
+
 import ContactForm from "../ContactForm/ContactForm";
 import classNames from "classnames";
-import {
-	AiFillGithub,
-	AiOutlineLinkedin,
-	AiOutlineDownload,
-} from "react-icons/ai";
+import { AiFillGithub, AiOutlineLinkedin } from "react-icons/ai";
 import { GrDocumentDownload } from "react-icons/gr";
+import ContactModal from "../Modals/ContactModal";
+import ModalService from "../../modules/modal/services/ModalService";
 
 const Navigation = () => {
-	const [showModal, setShowModal] = useState(false);
 	const [matches, setMatches] = useState(
 		window.matchMedia("(min-width: 600px)").matches
 	);
@@ -22,6 +19,11 @@ const Navigation = () => {
 			.matchMedia("(min-width: 600px)")
 			.addEventListener("change", (e) => setMatches(e.matches));
 	}, []);
+
+	const addModal = () => {
+		// @ts-ignore
+		ModalService.open(ContactModal);
+	};
 
 	const downloadFile = () => {
 		fetch("resume.pdf").then((response) => {
@@ -95,9 +97,7 @@ const Navigation = () => {
 					)}
 				</div>
 				<div className='actions'>
-					{matches && (
-						<Button onClick={() => setShowModal(true)}>Contact Me</Button>
-					)}
+					{matches && <Button onClick={() => addModal()}>Contact Me</Button>}
 				</div>
 				{matches && (
 					<div className='contact-icons'>
@@ -121,9 +121,6 @@ const Navigation = () => {
 					</div>
 				)}
 			</div>
-			<Modal showModal={showModal} setShowModal={setShowModal}>
-				<ContactForm setShowModal={setShowModal} />
-			</Modal>
 		</>
 	);
 };

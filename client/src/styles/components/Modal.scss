@@ -1,37 +1,50 @@
 .modal-overlay {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 999;
 }
+
 .modal-overlay.active {
-  display: flex;
-  .modal-body {
-    filter: drop-shadow(-15px 18px 40px rgba(0, 0, 0, 0.5));
-  }
+	display: flex;
+
+	.modal-dialog {
+		filter: drop-shadow(-15px 18px 40px rgba(0, 0, 0, 0.5));
+		position: relative;
+	}
 }
 
 .modal-overlay {
-  .modal-body {
-    background-color: white;
-    position: relative;
-    min-width: 300px;
-    .modal-contents {
-      display: flex;
-    }
-    .close {
-      cursor: pointer;
-      position: absolute;
-      right: 15px;
-      top: 15px;
-      height: 20px;
-      width: 20px;
-      fill: #577590;
-    }
-  }
+	.modal-dialog {
+		display: relative;
+
+		.modal-header {
+			display: flex;
+
+			.close {
+				position: absolute;
+				top: 20px;
+				right: 20px;
+				cursor: pointer;
+				height: 20px;
+				width: 20px;
+			}
+		}
+
+		background-color: white;
+		position: relative;
+		max-width: 600px;
+		width: 75%;
+		padding: 30px;
+
+		.modal-content {
+			display: flex;
+			flex-direction: column;
+		}
+	}
 }

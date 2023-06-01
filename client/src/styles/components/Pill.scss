@@ -1,6 +1,6 @@
 .pill {
 	padding: 8px 12px;
-	background-color: $paynesGray;
+	// background-color: $paynesGray;
 	color: $white;
 	display: inline;
 	border-radius: 25px;
@@ -9,7 +9,13 @@
 	font-weight: 700;
 	font-size: 12px;
 	margin: 5px;
+
+	&:first-child {
+		margin-left: 0;
+	}
+
 	transition: filter 200ms ease-in;
+
 	&:hover {
 		filter: brightness(85%);
 	}
