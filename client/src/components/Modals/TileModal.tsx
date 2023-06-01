@@ -17,7 +17,11 @@ const TileModal = (props: any) => {
 		<Modal modalRef={props.modalRef}>
 			<ModalHeader>
 				<h1 style={{ color: tileColor }}>{project.title}</h1>
-				<CgClose className='close' onClick={props.close} />
+				<CgClose
+					className='close'
+					onClick={props.close}
+					style={{ color: tileColor }}
+				/>
 			</ModalHeader>
 			<ModalBody>
 				<p>Company: {project.job}</p>
