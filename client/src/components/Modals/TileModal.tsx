@@ -11,7 +11,7 @@ const TileModal = (props: any) => {
 	return (
 		<Modal modalRef={props.modalRef}>
 			<ModalHeader>
-				<h3>{project.title}</h3>
+				<h1>{project.title}</h1>
 				<CgClose className='close' onClick={props.close} />
 			</ModalHeader>
 			<ModalBody>

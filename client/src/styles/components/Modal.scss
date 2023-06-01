@@ -22,9 +22,9 @@
 	.modal-dialog {
 		background-color: white;
 		position: relative;
-		min-width: 300px;
+		max-width: 600px;
 		width: 75%;
-		padding: 15px;
+		padding: 30px;
 
 		.modal-content {
 			display: flex;
