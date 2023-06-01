@@ -1,6 +1,6 @@
-import { FunctionComponent, useState, Component, ReactElement } from "react";
+import { FunctionComponent } from "react";
 import Project from "../../types/Project";
-import TileModal from "./TileModal";
+import TileModal from "../Modals/TileModal";
 import tileColors from "../../styles/variables/_variables.scss";
 import ModalService from "../../modules/modal/services/ModalService";
 

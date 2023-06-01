@@ -39,11 +39,7 @@ const TexAreaFieldAdapter = ({ input, meta, label, placeholder, ...rest }) => {
 	);
 };
 
-type ContactFormProps = {
-	setShowModal: Function;
-};
-
-const ContactForm = (props: ContactFormProps) => {
+const ContactForm = () => {
 	const [showEasterEgg, setShowEasterEgg] = useState(false);
 
 	const onSubmit = async (
@@ -69,7 +65,6 @@ const ContactForm = (props: ContactFormProps) => {
 		})
 			.then((res) => {
 				res.json();
-				props.setShowModal(false);
 				form.reset();
 			})
 			.catch((err) => {
@@ -78,14 +73,6 @@ const ContactForm = (props: ContactFormProps) => {
 	};
 	return (
 		<div className='form'>
-			<h1>Say Hi!</h1>
-			<div onClick={() => setShowEasterEgg(!showEasterEgg)}>
-				{showEasterEgg ? (
-					<p>or maybe I am, idk.</p>
-				) : (
-					<p>(I'm not doing weird things like collecting emails)</p>
-				)}
-			</div>
 			<Form
 				onSubmit={onSubmit}
 				render={({ handleSubmit, submitting, pristine, valid }) => (
