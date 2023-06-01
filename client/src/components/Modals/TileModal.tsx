@@ -14,28 +14,42 @@ const TileModal = (props: any) => {
 	const tileColor = tileColors[tileKey];
 
 	return (
-		<Modal modalRef={props.modalRef}>
-			<ModalHeader>
-				<h1 style={{ color: tileColor }}>{project.title}</h1>
-				<CgClose
-					className='close'
-					onClick={props.close}
-					style={{ color: tileColor }}
-				/>
-			</ModalHeader>
-			<ModalBody>
-				<p>Company: {project.job}</p>
-				{project.description.map((description: string[], index: number) => {
-					return <p key={index}>{description}</p>;
-				})}
-				<div className='pill-wrapper'>
-					{project.tech.map((t: string) => {
-						return <Pill tileColor={tileColor} key={t} text={t} />;
+		<div className='tile-modal'>
+			<Modal modalRef={props.modalRef}>
+				<ModalHeader>
+					<h1 style={{ color: tileColor }}>{project.title}</h1>
+					<CgClose
+						className='close'
+						onClick={props.close}
+						style={{ color: tileColor }}
+					/>
+				</ModalHeader>
+				<ModalBody>
+					<h2>Company: {project.job}</h2>
+					{project.description.map((description: string[], index: number) => {
+						return <p key={index}>{description}</p>;
 					})}
-				</div>
-			</ModalBody>
-			{/* <ModalFooter></ModalFooter> */}
-		</Modal>
+
+					{project.link && (
+						<div className='link-wrapper'>
+							<a
+								style={{ color: tileColor, textDecoration: "none" }}
+								href={project.link}
+							>
+								{project.title}
+							</a>
+						</div>
+					)}
+
+					<div className='pill-wrapper'>
+						{project.tech.map((t: string) => {
+							return <Pill tileColor={tileColor} key={t} text={t} />;
+						})}
+					</div>
+				</ModalBody>
+				{/* <ModalFooter></ModalFooter> */}
+			</Modal>
+		</div>
 	);
 };
 

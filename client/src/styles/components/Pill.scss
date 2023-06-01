@@ -9,6 +9,11 @@
 	font-weight: 700;
 	font-size: 12px;
 	margin: 5px;
+
+	&:first-child {
+		margin-left: 0;
+	}
+
 	transition: filter 200ms ease-in;
 
 	&:hover {
