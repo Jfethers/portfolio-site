@@ -7,7 +7,7 @@ import Pill from "../Pill/Pill";
 import { CgClose } from "react-icons/cg";
 import ContactForm from "../ContactForm/ContactForm";
 
-const Tile = (props: any) => {
+const ContactModal = (props: any) => {
 	const { project } = props;
 	return (
 		<Modal modalRef={props.modalRef}>
@@ -23,4 +23,4 @@ const Tile = (props: any) => {
 	);
 };
 
-export default Tile;
+export default ContactModal;
