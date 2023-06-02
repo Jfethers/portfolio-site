@@ -7,9 +7,9 @@ import { CgClose } from "react-icons/cg";
 import ContactForm from "../ContactForm/ContactForm";
 
 const ContactModal = (props: any) => {
-	const { close, modalRef } = props;
+	const { close, modalRef, matches } = props;
 	return (
-		<Modal modalRef={modalRef}>
+		<Modal matches={matches} modalRef={modalRef}>
 			<ModalHeader>
 				<h1>Say Hi!</h1>
 				<CgClose className='close' onClick={close} />

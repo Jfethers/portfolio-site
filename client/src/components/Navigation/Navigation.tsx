@@ -8,17 +8,8 @@ import { GrDocumentDownload } from "react-icons/gr";
 import ContactModal from "../Modals/ContactModal";
 import ModalService from "../../modules/modal/services/ModalService";
 
-const Navigation = () => {
-	const [matches, setMatches] = useState(
-		window.matchMedia("(min-width: 600px)").matches
-	);
+const Navigation = ({ matches }: { matches: boolean }) => {
 	const [showMenu, setShowMenu] = useState(false);
-
-	useEffect(() => {
-		window
-			.matchMedia("(min-width: 600px)")
-			.addEventListener("change", (e) => setMatches(e.matches));
-	}, []);
 
 	const addModal = () => {
 		// @ts-ignore

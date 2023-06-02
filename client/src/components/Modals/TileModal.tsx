@@ -8,14 +8,14 @@ import { CgClose } from "react-icons/cg";
 import tileColors from "../../styles/variables/_variables.scss";
 
 const TileModal = (props: any) => {
-	const { project } = props;
+	const { project, matches } = props;
 
 	const tileKey = project.color as keyof typeof tileColors;
 	const tileColor = tileColors[tileKey];
 
 	return (
 		<div className='tile-modal'>
-			<Modal modalRef={props.modalRef}>
+			<Modal matches={matches} modalRef={props.modalRef}>
 				<ModalHeader>
 					<h1 style={{ color: tileColor }}>{project.title}</h1>
 					<CgClose

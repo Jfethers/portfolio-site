@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ModalRoot from "./modules/modal/components/ModalRoot";
 import ModalService from "./modules/modal/services/ModalService";
 import Navigation from "./components/Navigation/Navigation";
@@ -7,11 +7,21 @@ import "./App.scss";
 import Tiles from "./components/Tiles/Tiles";
 
 const App = () => {
+	const [matches, setMatches] = useState(
+		window.matchMedia("(min-width: 600px)").matches
+	);
+
+	useEffect(() => {
+		window
+			.matchMedia("(min-width: 600px)")
+			.addEventListener("change", (e) => setMatches(e.matches));
+	}, []);
+
 	return (
 		<>
-			<Navigation />
+			<Navigation matches={matches} />
 			<AboutMe />
-			<ModalRoot />
+			<ModalRoot matches={matches} />
 			<Tiles />
 		</>
 	);
