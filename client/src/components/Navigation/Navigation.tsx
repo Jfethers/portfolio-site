@@ -52,6 +52,7 @@ const Navigation = ({ matches }: { matches: boolean }) => {
 								})}
 							>
 								<ul>
+									<li onClick={() => addModal()}>Contact Me</li>
 									<li>
 										<div className='item' onClick={downloadFile}>
 											Download Resume
