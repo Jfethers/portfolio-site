@@ -78,7 +78,7 @@ const projectData = [
 	{
 		key: "reorderVariants",
 		title: "Reorder Variants",
-		subHeading: "Much ado about a drop down/'s order..",
+		subHeading: "Much ado about a drop down's order..",
 		job: "Boxed",
 		description: [
 			[

@@ -1,12 +1,13 @@
 import { useEffect, useState, useRef, RefObject } from "react";
 import ModalService from "../services/ModalService";
 
-const ModalRoot = () => {
+const ModalRoot = ({ matches }: { matches: boolean }) => {
 	const [modal, setModal] = useState<null | {
 		component: any;
 		props: any;
 		close: Function;
 		ref: React.RefObject<HTMLDivElement>;
+		matches: boolean;
 	}>(null);
 
 	const ref = useRef<HTMLDivElement>(null);
@@ -30,6 +31,7 @@ const ModalRoot = () => {
 			setModal({
 				component,
 				props,
+				matches,
 				close: () => {
 					setModal(null);
 				},
@@ -45,6 +47,7 @@ const ModalRoot = () => {
 			{ModalComponent && (
 				<ModalComponent
 					{...modal?.props}
+					matches={modal?.matches}
 					close={modal?.close}
 					className={ModalComponent ? "d-block" : ""}
 					modalRef={modal?.ref}
