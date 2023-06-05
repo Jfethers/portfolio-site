@@ -12,6 +12,11 @@ const AboutMe: FunctionComponent = () => {
 					toddler. My proficiency on all of these things largely depends on my
 					caffeine intake for that day.
 				</p>
+				<p>
+					Check out some projects I've worked on at prior companies (or just on
+					my own) down below or drop me an email in the contact form up at the
+					top.
+				</p>
 			</div>
 			<div className='jump-link'>
 				<a id='project' href='#project'>
