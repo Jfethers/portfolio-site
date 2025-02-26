@@ -1,13 +1,11 @@
-import React, { FunctionComponent} from 'react';
-
+import { FunctionComponent } from "react";
 
 const Avatar: FunctionComponent = () => {
-    return (
-        <div className="avatar">
-            <div className="avatar-img"/>
-        </div>
-    )
-}
+	return (
+		<div className='avatar'>
+			<div className='avatar-img' />
+		</div>
+	);
+};
 
 export default Avatar;
-
