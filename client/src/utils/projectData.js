@@ -2,6 +2,84 @@
 
 const projectData = [
 	{
+		key: "campaignSummary",
+		title: "Ads Manager: Campaign and Line Items",
+		subHeading: "More data to some very important pages",
+		job: "Fox Media / Tubi",
+		description: [
+			[
+				"What started out as a very basic ticket - add these new filters and these new columns to these existing pages - quickly became very complex. THe old pages were using graphql but the backend engineers were providing a new RESTful api. Fields were different, data was different .. it quickly became just a complete under-the-hood overhaul of two of the more important pages on the Ads Manager platform. ",
+			],
+			[
+				"Some challenging aspects of this project was the filter and using the filters to build a query. The api was expecting the query to come in the form of a string - so something like /owners=this_person&owners=that_person&status=ACTIVE and so on. It was fun and challenging to take the form value from inputs and construct the query parameters.",
+			],
+			["I also learned how to write tests for hooks with this project"],
+		],
+		tech: [
+			"React Router",
+			"React",
+			"Typescript",
+			"Javascript",
+			"Mantine",
+			"Jest",
+		],
+		color: "saffron",
+	},
+	{
+		key: "adsManager",
+		title: "Ads Manager: Templates",
+		subHeading: "Internal Tools for Ads",
+		job: "Fox Media / Tubi",
+		description: [
+			[
+				"I recently switched teams to fill a front end need on the Ads Manager team. The Ads Manager platform is written in React and Typescript and utilizes React Router. One of my first big projects ont his new team was to create the Templates page",
+			],
+			[
+				"This was fairly basic CRUD implementation utilizing useQuery and REST. Users could view all of the created templates within a table which was filterable by status, creator, or key words. They could view individual templates and if they were the author of the template they could edit or delete the template",
+			],
+			[
+				"The big challenge here was getting used to a new code base. Not a lot of CSS is written here, instead relying on Mantine to fill a minimal design role. This is great when you're used to it but if you aren't it takes a lot of poking around to understand how people make things look the way they do without just tossing in some CSS.",
+			],
+			[
+				"I also struggled a bit writing tests. This platform takes unit tests (understandably) very seriously and it was a part of the requirements that each of my components and pages have a suite of tests. I've dabbled in Jest here or there but I've never had to really sit down and write test suites. It's challenging!",
+			],
+		],
+		tech: [
+			"React Router",
+			"React",
+			"Typescript",
+			"Javascript",
+			"Mantine",
+			"Jest",
+		],
+		color: "pistachio",
+	},
+	{
+		key: "lighthouse",
+		title: "XF Data Tech: Lighthouse",
+		subHeading: "An internal campaign platform",
+		job: "Fox Media",
+		description: [
+			[
+				"Myself and a small team of engineers were tasked with creating a brand new tools platform for the creation and management of campaigns. Some of the challenges I faced were:",
+			],
+			[
+				"Next - This was my first project utilizing Next.js. I am familiar with the idea - remember I did quite a bit of research into Remix which also utilizes directory based routing as well as server rendered components. Still, it was a steep learning curve trying to learn enough to be effective within the time line of the project.",
+			],
+			[
+				"Okta - All properties within Fox are authenticated via Okta' SSO flow. This proved to be complex as it required marrying of two parts : actual code within the project and settings in the okta dashboard I don't have permissions to access myself. I played quite a bit of telephone with an IT engineer who did have access",
+			],
+			[
+				"Groups! One of the requirements was to set up a concept of permissions. Certain people would be able to view and others to edit. Initially, we thought Okta might be able to handle this but after much research it was determined that Authenticating is Okta's made objective whereas permissions is .. not exactly authentication as it happens post authenticate and thus not Okta's purview. We ended up writing our own permissions service.",
+			],
+			[
+				"Endless components. The powers that be wanted to use an MUI library that was not available on desktop at the time. So we wrote a looot of components mostly using MUI's skeleton components and styled/designed them to look like the unavailable component.",
+			],
+		],
+		tech: ["Next", "Typescript", "Javascript", "React", "MUI"],
+		color: "zomp",
+	},
+	{
 		key: "portfolioSite",
 		title: "Personal Site",
 		subHeading:

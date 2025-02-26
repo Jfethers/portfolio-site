@@ -16,6 +16,8 @@
 	.modal-dialog {
 		filter: drop-shadow(-15px 18px 40px rgba(0, 0, 0, 0.5));
 		position: relative;
+		max-height: 600px;
+		overflow: scroll;
 	}
 }
 

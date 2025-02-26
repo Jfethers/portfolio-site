@@ -1,8 +1,6 @@
-import React from "react";
 import Modal from "../../modules/modal/components/Modal";
 import ModalBody from "../../modules/modal/components/ModalBody";
 import ModalHeader from "../../modules/modal/components/ModalHeader";
-import ModalFooter from "../../modules/modal/components/ModalFooter";
 import Pill from "../Pill/Pill";
 import { CgClose } from "react-icons/cg";
 import tileColors from "../../styles/variables/_variables.scss";
