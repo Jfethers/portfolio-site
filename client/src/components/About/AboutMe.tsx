@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import Avatar from "../Avatar/Avatar";
-import { CgZeit } from "react-icons/cg";
+// import { CgZeit } from "react-icons/cg";
 
 const AboutMe: FunctionComponent = () => {
 	return (
@@ -18,11 +18,11 @@ const AboutMe: FunctionComponent = () => {
 					top.
 				</p>
 			</div>
-			<div className='jump-link'>
+			{/* <div className='jump-link'>
 				<a id='project' href='#project'>
 					<CgZeit />
 				</a>
-			</div>
+			</div> */}
 		</div>
 	);
 };
